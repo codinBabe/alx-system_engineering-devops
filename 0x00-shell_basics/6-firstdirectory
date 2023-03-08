@@ -1,2 +1,2 @@
 #!/bin/bash
-/root/my_first_directory/ #
+file /root/my_first_directory/  #

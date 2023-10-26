@@ -2,7 +2,7 @@
 #this script that displays Best School 10 times
 
 count=10
-for ((i=0; i<$count; i++))
+for ((i=0; i<count; i++))
 do
 	echo "Best School"
 done

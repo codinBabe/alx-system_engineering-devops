@@ -12,7 +12,7 @@ do
 			echo $count
 			echo "bad luck from China"
 			;;
-		6)
+		9)
 			echo $count
 			echo "bad luck from Japan"
 			;;

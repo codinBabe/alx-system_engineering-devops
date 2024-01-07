@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 # script that accepts one argument and pass it to a regular
 # expression matching method
-puts ARGV[0].scan(/\[from:(\+?\W*)\]\s\[to:(\+?\W*)\]\s\[flags:(\S*)\]/).join(',')
+puts ARGV[0].scan(/\[from:(\+?\w*)\]\s\[to:(\+?\w*)\]\s\[flags:(\S*)\]/).join(',')

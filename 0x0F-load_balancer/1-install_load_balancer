@@ -21,8 +21,8 @@ frontend haproxy_balancer
 
 backend webservers
     balance roundrobin
-    server 234523-web-01 18.234.105.167:80 check
-    server 234523-web-02 100.25.222.179:80 check
+    server 234523-web-01 100.25.191.12:80 check
+    server 234523-web-02 52.3.243.46:80 check
 "
 # Add your HAProxy configuration to haproxy.cfg
 sudo cp -a /etc/haproxy/haproxy.cfg{,.orig}

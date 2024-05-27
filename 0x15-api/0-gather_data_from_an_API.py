@@ -1,32 +1,26 @@
 #!/usr/bin/python3
-"""
-Using https://jsonplaceholder.typicode.com
-to returns info about employee TODO progress
-"""
-import re
+"""Gather data from an API"""
+
 import requests
 import sys
 
 
-API = "https://jsonplaceholder.typicode.com"
-"""REST API url"""
+if __name__ == "__main__":
+    # Define the URL for the REST API
+    url = "https://jsonplaceholder.typicode.com/"
 
+    # send a GET request to retrieve user info
+    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
 
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            user_resp = requests.get('{}/users/{}'.format(API, id)).json()
-            todos_resp = requests.get('{}/todos'.format(API)).json()
-            user_name = user_resp.get('name')
-            todos = list(filter(lambda x: x.get('userId') == id, todos_resp))
-            todos_done = list(filter(lambda x: x.get('completed'), todos))
-            print(
-                'Employee {} is done with tasks({}/{}):'.format(
-                    user_name,
-                    len(todos_done),
-                    len(todos)
-                )
-            )
-            for todo_done in todos_done:
-                print('\t {}'.format(todo_done.get('title')))
+    # send a GET request to retrive the TODO list
+    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
+
+    # filter completed TODO list and store titles in a list
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+
+    # print employee's name, completed tasks & total no of tasks
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+
+    # print the titles of completed tasks with indentation
+    [print("\t {}".format(c)) for c in completed]

@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 using recursion to get all posts of subreddit in a list
@@ -22,4 +21,3 @@ def recurse(subreddit, hot_list=[], after=None):
         return hot_list
     else:
         return None
-
